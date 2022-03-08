@@ -1,0 +1,27 @@
+.input-container {
+  width: 100%;
+  margin: 0 auto 1rem auto;
+}
+
+.input-container label {
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.input-container input {
+  width: 100%;
+  height: 2rem;
+  border: 1px solid #505050;
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+button {
+  color: #212427;
+  font-weight: 600;
+  height: 2rem;
+  width: 5rem;
+  border: 1px solid #505050;
+  border-radius: 5px;
+  background-color: #4ec9b0;
+}
