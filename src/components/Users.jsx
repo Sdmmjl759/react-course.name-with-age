@@ -1,5 +1,8 @@
 import Card from "./Card-SC";
+// import { ReactDOM } from "react";
+// import Wrapper from "./Helpers/Wrapper";
 import { ThemeProvider } from "styled-components";
+import React from "react";
 
 // import styles from "./Users.module.css";
 const theme = {
@@ -10,17 +13,22 @@ const theme = {
 
 const Users = (props) => {
   return (
-    <ThemeProvider theme={theme}>
-      {props.items.map(
-        userData => (
-          <Card key={userData.id}>
-            <span>
-              {userData.username} ({userData.age} years old)
-            </span>
-          </Card>
-        )
-      )}
-    </ThemeProvider>
+    // <Wrapper>
+    <React.Fragment>
+      <ThemeProvider theme={theme}>
+        {props.items.map(
+          userData => (
+            <Card key={userData.id}>
+              <span>
+                {userData.username} ({userData.age} years old)
+              </span>
+            </Card>
+          )
+        )}
+        {/* {ReactDOM.createPortal(<Backdrop onClick={onConfirm} />, document.getElementById('backdrop-root')} */}
+      </ThemeProvider>
+    </React.Fragment>
+    // </Wrapper>
   );
 };
 

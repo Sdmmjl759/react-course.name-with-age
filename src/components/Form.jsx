@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useRef } from "react";
 import Card from "./Card-SC";
 import styles from './Form.module.css'
 
 const Form = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState('');
-  const [enteredAge, setEnteredAge] = useState('');
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
-  const usernameChangeHandler = e => setEnteredUsername(e.target.value);
-  const ageChangeHandler = e => setEnteredAge(e.target.value);
+  // const [enteredUsername, setEnteredUsername] = useState('');
+  // const [enteredAge, setEnteredAge] = useState('');
+
+  // const usernameChangeHandler = e => setEnteredUsername(e.target.value);
+  // const ageChangeHandler = e => setEnteredAge(e.target.value);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+    const enteredUsername = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+
     const userData = {
       username: enteredUsername,
       age: enteredAge,
@@ -25,8 +30,10 @@ const Form = (props) => {
     if (+enteredAge < 0) return;
 
     props.onSaveUserData(userData);
-    setEnteredUsername('');
-    setEnteredAge('');
+    // setEnteredUsername('');
+    // setEnteredAge('');
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   }
 
   return (
@@ -36,16 +43,14 @@ const Form = (props) => {
           <label>Username</label>
           <input
             type="text"
-            value={enteredUsername}
-            onChange={usernameChangeHandler}
+            ref={nameInputRef}
           />
         </div>
         <div className={styles['input-container']}>
           <label>Age</label>
           <input
             type="number"
-            value={enteredAge}
-            onChange={ageChangeHandler}
+            ref={ageInputRef}
           />
         </div>
         <button>Add User</button>
